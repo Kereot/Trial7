@@ -29,14 +29,14 @@ public class StudentService {
 
     @Transactional
     public Student update(StudentDto studentDto) {
-        Student product = studentRepository.findById(studentDto.getId()).orElseThrow(() -> new RuntimeException(("Can't update the student (not found in the DB) id: " + studentDto.getId())));
+        Student student = studentRepository.findById(studentDto.getId()).orElseThrow(() -> new RuntimeException(("Can't update the student (not found in the DB) id: " + studentDto.getId())));
         if (studentDto.getName() != null && !studentDto.getName().isBlank()) {
-            product.setName(studentDto.getName());
+            student.setName(studentDto.getName());
         }
         if (studentDto.getAge() > 0) {
-            product.setAge(studentDto.getAge());
+            student.setAge(studentDto.getAge());
         }
-        return product;
+        return student;
     }
 
     public void deleteStudent(Long id) {
