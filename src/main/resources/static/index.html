@@ -1,0 +1,56 @@
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="studentController">
+        <h3>Students List</h3>
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Delete</td>
+                <td>New Name</td>
+                <td>New Price</td>
+                <td>Update</td>
+            </tr>
+            <tbody>
+            <tr ng-repeat="s in StudentsList">
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.age}}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="deleteStudent(s.id)">Remove</button>
+                </td>
+                <td>
+                    <input type="text" name="name" ng-model="name" />
+                </td>
+                <td>
+                    <input type="number" name="age" ng-model="age" />
+                </td>
+                <td>
+                    <button class="btn btn-primary" ng-click="updateStudent(s.id, name, age)">Confirm</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h3>Add Student</h3>
+        <form novalidate ng-submit="addStudent()">
+            <input class="form-control" type="text" ng-model="newStudent.name">
+            <p></p>
+            <input class="form-control" type="number" ng-model="newStudent.age">
+            <p></p>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </form>
+    </div>
+</body>
+</html>
